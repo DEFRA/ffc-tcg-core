@@ -1,0 +1,40 @@
+#!/usr/bin/env sh
+if [ -z "$(docker network ls --filter name=^ffc-pay$ --format={{.Name}})" ]; then
+  echo "Creating ffc-tcg Docker network"
+  docker network create ffc-tcg
+fi
+
+set -e
+projectRoot="$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)"
+
+show_help() {
+  echo "
+    Usage: path/to/ffc-tcg-core [OPTION...]
+    Run services.
+
+    Options:
+      -h, --help       display this help text
+    "
+}
+
+while :; do
+  case $1 in  
+    -h|--help)   # Call a "show_help" function to display a synopsis, then exit.
+      show_help
+      exit
+      ;;
+    *)
+      break
+  esac
+
+  shift
+done
+
+cd "${projectRoot}"
+
+./ffc-tcg-customer-registry/scripts/start -d;
+./ffc-tcg-portal/scripts/start -d;
+./ffc-tcg-apply/scripts/start -d;
+./ffc-tcg-eligibility/scripts/start -d;
+./ffc-tcg-back-office/scripts/start -d;
+./ffc-tcg-abaco-agri-stub/scripts/start -d;

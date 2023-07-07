@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+echo 'ffc-tcg-customer-registry' &&
+  curl --silent "https://api.github.com/repos/defra/ffc-tcg-customer-registry/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+
+echo 'ffc-tcg-portal' &&
+  curl --silent "https://api.github.com/repos/defra/ffc-tcg-portal/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+
+echo 'ffc-tcg-apply' &&
+  curl --silent "https://api.github.com/repos/defra/ffc-tcg-apply/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+
+echo 'ffc-tcg-eligibility' &&
+  curl --silent "https://api.github.com/repos/defra/ffc-tcg-eligibility/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+
+echo 'ffc-tcg-back-office' &&
+  curl --silent "https://api.github.com/repos/defra/ffc-tcg-back-office/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+
+echo 'ffc-tcg-abaco-agri-stub' &&
+  curl --silent "https://api.github.com/repos/defra/ffc-tcg-abaco-agri-stub/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'

@@ -1,0 +1,30 @@
+#!/usr/bin/env sh
+
+# Clone repositories managed by this project
+set -e
+projectRoot=$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)
+
+(
+  cd "${projectRoot}"
+
+  printf "\nCloning repositories\n"
+
+  test -d ffc-tcg-customer-registry\
+    && >&2 echo "The 'ffc-tcg-customer-registry' repository already exists. Skipping." \
+    || git clone https://github.com/DEFRA/ffc-tcg-customer-registry.git
+  test -d ffc-tcg-portal\
+    && >&2 echo "The 'ffc-tcg-portal' repository already exists. Skipping." \
+    || git clone https://github.com/DEFRA/ffc-tcg-portal.git
+  test -d ffc-tcg-apply\
+    && >&2 echo "The 'ffc-tcg-apply' repository already exists. Skipping." \
+    || git clone https://github.com/DEFRA/ffc-tcg-apply.git
+  test -d ffc-tcg-eligibility\
+    && >&2 echo "The 'ffc-tcg-eligibility' repository already exists. Skipping." \
+    || git clone https://github.com/DEFRA/ffc-tcg-eligibility.git
+  test -d ffc-tcg-back-office\
+    && >&2 echo "The 'ffc-tcg-back-office' repository already exists. Skipping." \
+    || git clone https://github.com/DEFRA/ffc-tcg-back-office.git
+  test -d ffc-tcg-abaco-agri-stub\
+    && >&2 echo "The 'ffc-tcg-abaco-agri-stub' repository already exists. Skipping." \
+    || git clone https://github.com/DEFRA/ffc-tcg-abaco-agri-stub.git  
+)

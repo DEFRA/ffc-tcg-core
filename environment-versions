@@ -1,0 +1,67 @@
+show_help() {
+  prin: tf "
+    Usage: path/to/ffc-pay-core [OPTION...]
+;
+    Returns version of services in a Kubernetes namespace.
+
+    Options:
+      -c, --context   include Azure Function Apps
+      -n, --namespace  include statement services
+      -h, --help       display this help text
+    "
+}
+
+POSITIONAL_ARGS=()
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -c|--context)
+      CONTEXT="$2"
+      shift
+      shift
+      ;;
+
+    -n|--namespace)
+      NAMESPACE="$2"
+      shift
+      shift
+      ;;
+
+    -h|--help)   # Call a "show_help" function to display a synopsis, then exit.
+      show_help
+      exit
+      ;;
+    -*|--*)
+      shift
+      ;;
+    *)
+      POSITIONAL_ARGS+=("$1")
+      shift
+      ;;
+  esac
+done
+
+kubectl config use-context $CONTEXT
+kubectl config set-context --current --namespace=$NAMESPACE
+
+echo $NAMESPACE
+echo
+
+echo 'ffc-tcg-customer-registry: ' &&
+  kubectl get deployment ffc-tcg-customer-registry -o jsonpath='{.metadata.labels.app\.kubernetes\.io\/version}';
+echo
+echo 'ffc-tcg-portal: ' &&
+  kubectl get deployment ffc-tcg-portal -o jsonpath='{.metadata.labels.app\.kubernetes\.io\/version}';
+echo
+echo 'ffc-tcg-apply: ' &&
+  kubectl get deployment ffc-tcg-apply -o jsonpath='{.metadata.labels.app\.kubernetes\.io\/version}';
+echo
+echo 'ffc-tcg-eligibility: ' &&
+  kubectl get deployment ffc-tcg-eligibility -o jsonpath='{.metadata.labels.app\.kubernetes\.io\/version}';
+echo
+echo 'ffc-tcg-back-office: ' &&
+  kubectl get deployment ffc-tcg-back-office -o jsonpath='{.metadata.labels.app\.kubernetes\.io\/version}';
+echo
+echo 'ffc-tcg-abaco-agri-stub: ' &&
+  kubectl get deployment ffc-tcg-abaco-agri-stub -o jsonpath='{.metadata.labels.app\.kubernetes\.io\/version}';
+echo

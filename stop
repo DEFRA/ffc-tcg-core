@@ -1,0 +1,45 @@
+#!/usr/bin/env sh
+set -e
+projectRoot="$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)"
+
+show_help() {
+  echo "
+    Usage: path/to/ffc/tcg/services [OPTION...]
+    Stop payment services.
+
+    Options:
+      -h, --help       display this help text
+    "
+}
+
+while :; do
+  case $1 in
+    -h|--help)   # Call a "show_help" function to display a synopsis, then exit.
+      show_help
+      exit
+      ;;
+    *)
+      break
+  esac
+
+  shift
+done
+
+cd "${projectRoot}"
+cd ./ffc-tcg-customer-registry && \
+  docker-compose down $@
+cd "${projectRoot}"
+cd ./ffc-tcg-portal && \
+  docker-compose down $@
+cd "${projectRoot}"
+cd ./ffc-tcg-apply && \
+  docker-compose down $@
+cd "${projectRoot}"
+cd ./ffc-tcg-eligibility && \
+  docker-compose down $@
+cd "${projectRoot}"
+cd ./ffc-tcg-back-office && \
+  docker-compose down $@
+cd "${projectRoot}"
+cd ./ffc-tcg-abaco-agri-stub && \
+  docker-compose down $@
