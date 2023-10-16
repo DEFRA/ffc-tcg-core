@@ -65,3 +65,6 @@ echo
 echo 'ffc-tcg-abaco-agri-stub: ' &&
   kubectl get deployment ffc-tcg-abaco-agri-stub -o jsonpath='{.metadata.labels.app\.kubernetes\.io\/version}';
 echo
+echo 'ffc-tcg-api-gateway: ' &&
+  kubectl get deployment ffc-tcg-api-gateway -o jsonpath='{.metadata.labels.app\.kubernetes\.io\/version}';
+echo

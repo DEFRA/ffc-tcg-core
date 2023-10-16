@@ -43,3 +43,6 @@ cd ./ffc-tcg-back-office && \
 cd "${projectRoot}"
 cd ./ffc-tcg-abaco-agri-stub && \
   docker-compose down $@
+cd "${projectRoot}"
+cd ./ffc-tcg-api-gateway && \
+  docker-compose down $@

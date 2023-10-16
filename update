@@ -49,3 +49,7 @@ cd "${projectRoot}"
 cd ./ffc-tcg-abaco-agri-stub && \
   git checkout main && \
   git pull
+cd "${projectRoot}"
+cd ./ffc-tcg-api-gateway && \
+  git checkout main && \
+  git pull

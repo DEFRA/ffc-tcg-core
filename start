@@ -38,3 +38,4 @@ cd "${projectRoot}"
 ./ffc-tcg-eligibility/scripts/start -d;
 ./ffc-tcg-back-office/scripts/start -d;
 ./ffc-tcg-abaco-agri-stub/scripts/start -d;
+./ffc-tcg-api-gateway/scripts/start -d;

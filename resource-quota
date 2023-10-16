@@ -11,6 +11,7 @@ arr=(
   "ffc-tcg-eligibility"
   "ffc-tcg-back-office"
   "ffc-tcg-abaco-agri-stub"
+  "ffc-tcg-api-gateway"
   )
 
 for i in "${arr[@]}"

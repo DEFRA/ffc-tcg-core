@@ -43,3 +43,6 @@ cd ./ffc-tcg-back-office && \
 cd "${projectRoot}"
 cd ./ffc-tcg-abaco-agri-stub && \
   git pull
+cd "${projectRoot}"
+cd ./ffc-tcg-api-gateway && \
+  git pull

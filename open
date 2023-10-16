@@ -33,3 +33,4 @@ code ./ffc-tcg-apply;
 code ./ffc-tcg-eligibility;
 code ./ffc-tcg-back-office;
 code ./ffc-tcg-abaco-agri-stub;
+code ./ffc-tcg-api-gateway;
